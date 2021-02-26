@@ -8,6 +8,8 @@ use app\models\ItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\db\Query;
+
 
 /**
  * ItemController implements the CRUD actions for Item model.
@@ -65,6 +67,9 @@ class ItemController extends Controller
     public function actionCreate()
     {
         $model = new Item();
+        
+        $connection = \Yii::$app->db;
+        $transaction = $connection->beginTransaction();
 
         if ($model->load(Yii::$app->request->post())  ) {
             
