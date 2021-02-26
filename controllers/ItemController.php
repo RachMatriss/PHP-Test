@@ -67,9 +67,6 @@ class ItemController extends Controller
     public function actionCreate()
     {
         $model = new Item();
-        
-        $connection = \Yii::$app->db;
-        $transaction = $connection->beginTransaction();
 
         if ($model->load(Yii::$app->request->post())  ) {
             
